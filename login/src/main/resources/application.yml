@@ -1,0 +1,18 @@
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: spring-security
+            client-secret: bfbd9f62-02ce-4638-a370-80d45514bd0a
+          github:
+            client-id: 818e44b294efc31e6530
+            client-secret: cec36ebf88c1b25a1861541b1b3f1fcf466aa965
+          google:
+            client-id: 1041144924884-2mt0ncg63kigsiuquu9a0incg55iod7h.apps.googleusercontent.com
+            client-secret: 79-SEoHtjxEu-TZieJCLcIHv
+        provider:
+          keycloak:
+            issuer-uri: http://idp:9999/auth/realms/demo/

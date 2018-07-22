@@ -1,0 +1,8 @@
+
+spring:
+  security:
+    oauth2:
+      resource-server:
+        jwk-set-uri: http://localhost:9999/auth/realms/demo/protocol/openid-connect/certs
+server:
+  port: 9090
