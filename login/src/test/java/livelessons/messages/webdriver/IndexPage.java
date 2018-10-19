@@ -51,4 +51,5 @@ public class IndexPage {
 	public String message() {
 		return this.message.getText();
 	}
+
 }

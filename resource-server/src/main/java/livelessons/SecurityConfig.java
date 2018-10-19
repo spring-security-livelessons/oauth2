@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
 	@Value("${spring.security.oauth2.resource-server.jwk-set-uri}")
 	String jwkSetUril;
 

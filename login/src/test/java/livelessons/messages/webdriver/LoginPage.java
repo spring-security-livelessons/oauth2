@@ -29,7 +29,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Rob Winch
  */
 public class LoginPage {
+
 	private WebDriver driver;
+
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -43,6 +45,7 @@ public class LoginPage {
 	}
 
 	public class Form {
+
 		@FindBy(name = "username")
 		private WebElement username;
 
@@ -70,6 +73,7 @@ public class LoginPage {
 			this.button.click();
 			return PageFactory.initElements(LoginPage.this.driver, page);
 		}
+
 	}
 
 }

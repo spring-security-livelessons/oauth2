@@ -35,13 +35,15 @@ public class LoginApplication {
 
 	@Bean
 	WebClient webClient(OAuth2AuthorizedClientRepository authorizedClientRepository) {
-		return WebClient.builder()
-				.apply(oauth2ServletConfig(authorizedClientRepository))
+		return WebClient.builder().apply(oauth2ServletConfig(authorizedClientRepository))
 				.build();
 	}
 
 	@Bean
-	OAuth2AuthorizedClientRepository auth2AuthorizedClientRepository(OAuth2AuthorizedClientService authorizedClientService) {
-		return new AuthenticatedPrincipalOAuth2AuthorizedClientRepository(authorizedClientService);
+	OAuth2AuthorizedClientRepository auth2AuthorizedClientRepository(
+			OAuth2AuthorizedClientService authorizedClientService) {
+		return new AuthenticatedPrincipalOAuth2AuthorizedClientRepository(
+				authorizedClientService);
 	}
+
 }
