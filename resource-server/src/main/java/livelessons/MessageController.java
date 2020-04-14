@@ -26,8 +26,10 @@ import java.util.Map;
 
 @RestController
 public class MessageController {
+
 	@GetMapping("/")
 	Map<String, String> message(@AuthenticationPrincipal Jwt jwt) {
 		return Collections.singletonMap("text", "Hello " + jwt.getClaimAsString("email"));
 	}
+
 }

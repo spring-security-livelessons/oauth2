@@ -33,6 +33,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
 public class HelloSecurityApplicationTests {
+
 	@Autowired
 	private WebDriver driver;
 
@@ -42,4 +43,5 @@ public class HelloSecurityApplicationTests {
 		inbox.assertAt();
 		assertThat(inbox.message()).isEqualTo("Hello Security!");
 	}
+
 }

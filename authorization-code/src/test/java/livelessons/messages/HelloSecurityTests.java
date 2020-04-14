@@ -32,6 +32,7 @@ import livelessons.messages.webdriver.LoginPage;
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
 public class HelloSecurityTests {
+
 	@Autowired
 	private WebDriver driver;
 
@@ -47,27 +48,31 @@ public class HelloSecurityTests {
 	@Test
 	public void loginFailure() {
 		LoginPage login = IndexPage.to(this.driver, LoginPage.class);
+		// @formatter:off
 		login.form()
 			.username("user")
 			.password("invalid")
 			.login(LoginPage.class)
 			.assertAt();
+		// @formatter:on
 	}
 
 	@Test
 	public void loginSuccess() {
 		LoginPage login = IndexPage.to(this.driver, LoginPage.class);
+		// @formatter:off
 		login.form()
 				.username(this.securityProperties.getUser().getName())
 				.password(this.securityProperties.getUser().getPassword())
 				.login(IndexPage.class)
 				.assertAt();
+		// @formatter:on
 	}
 
 	@Test
 	public void logout() {
 		LoginPage login = IndexPage.to(this.driver, LoginPage.class);
-
+		// @formatter:off
 		login.form()
 				.username(this.securityProperties.getUser().getName())
 				.password(this.securityProperties.getUser().getPassword())
@@ -78,8 +83,9 @@ public class HelloSecurityTests {
 			.assertAt()
 			.logout()
 			.assertAt();
-
+		// @formatter:on
 		login = IndexPage.to(this.driver, LoginPage.class);
 		login.assertAt();
 	}
+
 }

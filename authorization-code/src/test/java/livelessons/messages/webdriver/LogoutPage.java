@@ -29,6 +29,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Rob Winch
  */
 public class LogoutPage {
+
 	private WebDriver driver;
 
 	@FindBy(css = "button")
@@ -52,4 +53,5 @@ public class LogoutPage {
 		this.logout.click();
 		return PageFactory.initElements(this.driver, LoginPage.class);
 	}
+
 }
