@@ -20,11 +20,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.web.AuthenticatedPrincipalOAuth2AuthorizedClientRepository;
 import org.springframework.security.oauth2.client.web.OAuth2AuthorizedClientRepository;
+import org.springframework.security.oauth2.client.web.reactive.function.client.ServletOAuth2AuthorizedClientExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient;
-
-import static org.springframework.security.oauth2.client.web.reactive.function.client.OAuth2ExchangeFilterFunctions.oauth2ServletConfig;
 
 @SpringBootApplication
 public class LoginApplication {
@@ -34,9 +34,16 @@ public class LoginApplication {
 	}
 
 	@Bean
-	WebClient webClient(OAuth2AuthorizedClientRepository authorizedClientRepository) {
-		return WebClient.builder().apply(oauth2ServletConfig(authorizedClientRepository))
+	WebClient webClient(ClientRegistrationRepository clientRegistrationRepository,
+			OAuth2AuthorizedClientRepository authorizedClientRepository) {
+		// @formatter:off
+		ServletOAuth2AuthorizedClientExchangeFilterFunction oauth2Client =
+				new ServletOAuth2AuthorizedClientExchangeFilterFunction(clientRegistrationRepository,
+						authorizedClientRepository);
+		return WebClient.builder()
+				.apply(oauth2Client.oauth2Configuration())
 				.build();
+		// @formatter:on
 	}
 
 	@Bean

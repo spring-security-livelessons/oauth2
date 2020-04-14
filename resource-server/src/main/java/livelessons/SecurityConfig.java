@@ -13,12 +13,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		// @formatter:off
 		http
-			.oauth2()
-				.resourceServer()
-					.jwt().jwkSetUri(this.jwkSetUril)
+			.oauth2ResourceServer()
+				.jwt()
+					.jwkSetUri(this.jwkSetUril)
 					.and()
+				.and()
 			.authorizeRequests()
 				.anyRequest().access("principal?.claims['email'] == 'user@example.com'");
+		// @formatter:on
 	}
+
 }
